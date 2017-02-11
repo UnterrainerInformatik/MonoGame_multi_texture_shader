@@ -104,3 +104,33 @@
 /processorParam:DebugMode=Auto
 /build:ps_4_0_tex2D.fx
 
+#begin ps4l91_add_mix_switched.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:ps4l91_add_mix_switched.fx
+
+#begin ps4l91_add_mixed.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:ps4l91_add_mixed.fx
+
+#begin ps4l91_add_new.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:ps4l91_add_new.fx
+
+#begin ps4l91_add_register.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:ps4l91_add_register.fx
+
+#begin ps4l91_add_tex2D.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:ps4l91_add_tex2D.fx
+

@@ -16,7 +16,7 @@ namespace Shaders_multi_textures
 
         private const int MARGIN = 10;
 
-        private string[] Levels { get; } = {"ps_4_0_level_9_1", "ps_4_0" };
+        private string[] Levels { get; } = {"ps_4_0_level_9_1", "ps_4_0", "ps4l91_add" };
         private string[] Method { get; } = {"new", "register", "mixed", "mix_switched", "tex2D"};
 
         private Dictionary<string, Effect> Effects { get; } = new Dictionary<string, Effect>();
@@ -94,7 +94,11 @@ namespace Shaders_multi_textures
                     {
                         case "new":
                         case "mixed":
+                        case "tex2D":
                             e.Parameters["SecondTexture"].SetValue(DisplacementMap);
+                            break;
+                        case "mix_switched":
+                            e.Parameters["FirstTexture"].SetValue(DisplacementMap);
                             break;
                         case "register":
                             GraphicsDevice.Textures[1] = DisplacementMap;
