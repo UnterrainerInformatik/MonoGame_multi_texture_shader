@@ -19,7 +19,80 @@ I've updated the repo with a few bug-fixes and added another series of tests tha
 
 Seems to make a difference when actually it really shouldn't...
 
+###### First column shows a successful output
+
+###### Row 1 and 2 use a different shader than row 3
+
 ![results](https://github.com/UnterrainerInformatik/MonoGame_multi_texture_shader/blob/master/results/psilo1.png)
+
+###### new
+
+```hlsl
+Texture2D FirstTexture;
+SamplerState FirstSampler
+{
+    Texture = <FirstTexture>;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	MipFilter = Linear;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+... second one is the same style; omitted for brevity...
+```
+
+###### register
+
+```hlsl
+sampler2D FirstSampler : register(s0);
+sampler2D SecondSampler : register(s1);
+```
+
+###### mixed
+
+First uses register notation. Second doesn't.
+
+```hlsl
+sampler2D FirstSampler : register(s0);
+
+texture SecondTexture;
+sampler SecondSampler = sampler_state
+{
+	Texture = <SecondTexture>;
+};
+```
+
+###### mix switch
+
+Second uses register notation. First doesn't.
+
+```hlsl
+sampler2D SecondSampler : register(s0);
+
+texture FirstTexture;
+sampler FirstSampler = sampler_state
+{
+	Texture = <FirstTexture>;
+};
+```
+
+###### tex2d
+
+```hlsl
+texture FirstTexture;
+sampler FirstSampler = sampler_state
+{
+	Texture = <FirstTexture>;
+};
+
+texture SecondTexture;
+sampler SecondSampler = sampler_state
+{
+	Texture = <SecondTexture>;
+};
+```
+
+
 
 #### Row1 and 2
 
