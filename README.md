@@ -1,23 +1,30 @@
 # MonoGame_multi_texture_shader
+
 A test-repo to showcase a strange behavior that may be a bug.
 
 
 
 ### Notes
 
-The repo should contain all the files necessary for compilation.
-
-I've tried this using the latest develop NuGet available (3.6.0.1518)
-
-The project is WindowsDX as is my game that I've encountered this behavior on.
-
-Maybe I've done all the shaders wrong with the exception of the 'new' shader which obviously works.
+* The repo should contain all the files necessary for compilation.
+* I've tried this using the latest develop NuGet available (3.6.0.1518)
+* The project is WindowsDX as is my game that I've encountered this behavior on.
+* Maybe I've done all the shaders wrong with the exception of the 'new' shader which obviously works.
 
 ### Update
 
-I've updated the repo with a few bug-fixes and added another series of tests that contain an additive shader that fetches values from the textures in the 'normal' order (base-texture, then displacement-texture) since the theory was that that order matters somehow when MG assigns the textures to the samplers.
+* I've updated the repo with a few bug-fixes and added another series of tests that contain an additive shader that fetches values from the textures in the 'normal' order (base-texture, then displacement-texture) since the theory was that that order matters somehow when MG assigns the textures to the samplers.
+* Seems to make a difference when actually it really shouldn't...
 
-Seems to make a difference when actually it really shouldn't...
+### Update
+
+* I have removed the MG nuget package to be able to switch between MG versions more conveniently and to try the develop version.
+* Tried with MG 3.7.0.960 -> same results.
+* Added
+
+
+
+## Results
 
 ###### First column shows a successful output
 
@@ -109,6 +116,12 @@ The shader for this row is a additive shader. I take a value from the first and 
 Therefore the fetching order here is 1 -> 2.
 
 (The first (new), the third (mixed) and fifth (tex2D) columns actually show the successful output of the additive shader. All columns should look like that.)
+
+### Test With OpenGL Project
+
+![results](https://github.com/UnterrainerInformatik/MonoGame_multi_texture_shader/blob/master/results/psilo2.png)
+
+The 'new' version of the declaration is not available at level 2_0 or 3_0, so it's MG-orange.
 
 ### Open Questions
 

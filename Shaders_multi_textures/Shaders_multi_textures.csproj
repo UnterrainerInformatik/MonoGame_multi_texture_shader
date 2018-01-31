@@ -46,20 +46,37 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.6.0.1516, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1516-develop\lib\net40\MonoGame.Framework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1598, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\background.png" />
+    <Content Include="Content\displacement.png" />
+    <Content Include="Content\ps4l91_add_mixed.fx" />
+    <Content Include="Content\ps4l91_add_mix_switched.fx" />
+    <Content Include="Content\ps4l91_add_new.fx" />
+    <Content Include="Content\ps4l91_add_register.fx" />
+    <Content Include="Content\ps4l91_add_tex2D.fx" />
+    <Content Include="Content\ps_4_0_level_9_1_mixed.fx" />
+    <Content Include="Content\ps_4_0_level_9_1_mix_switched.fx" />
+    <Content Include="Content\ps_4_0_level_9_1_new.fx" />
+    <Content Include="Content\ps_4_0_level_9_1_register.fx" />
+    <Content Include="Content\ps_4_0_level_9_1_tex2D.fx" />
+    <Content Include="Content\ps_4_0_mixed.fx" />
+    <Content Include="Content\ps_4_0_mix_switched.fx" />
+    <Content Include="Content\ps_4_0_new.fx" />
+    <Content Include="Content\ps_4_0_register.fx" />
+    <Content Include="Content\ps_4_0_tex2D.fx" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="packages.config" />
+    <None Include="Content\Arsenal.spritefont" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

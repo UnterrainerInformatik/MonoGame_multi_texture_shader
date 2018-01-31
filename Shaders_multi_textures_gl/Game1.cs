@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Shaders_multi_textures
+namespace Shaders_multi_textures_gl
 {
     /// <summary>
     ///     This is the main type for your game.
@@ -14,8 +15,14 @@ namespace Shaders_multi_textures
 
         private const int MARGIN = 10;
 
-        private string[] Levels { get; } = {"ps_4_0_level_9_1", "ps_4_0", "ps4l91_add"};
-        private string[] Method { get; } = {"new", "register", "mixed", "mix_switched", "tex2D"};
+        private string[] Levels { get; } = { "ps_2_0", "ps_3_0", "ps3_add" };
+        private string[] Method { get; } = { "new", "register", "mixed", "mix_switched", "tex2D" };
+
+        private Tuple<string, string>[] Exclude { get; } =
+        {
+            new Tuple<string, string>("ps_2_0", "new"), new Tuple<string, string>("ps_3_0", "new"),
+            new Tuple<string, string>("ps3_add", "new")
+        };
 
         private Dictionary<string, Effect> Effects { get; } = new Dictionary<string, Effect>();
         private Dictionary<string, RenderTarget2D> RenderTargets { get; } = new Dictionary<string, RenderTarget2D>();
@@ -88,6 +95,18 @@ namespace Shaders_multi_textures
 
                     GraphicsDevice.SetRenderTarget(r);
                     GraphicsDevice.Clear(ClearOptions.Target, Color.MonoGameOrange, 0, 0);
+
+                    bool skip = false;
+                    foreach (var t in Exclude)
+                    {
+                        if (t.Item1 == level && t.Item2 == method)
+                        {
+                            skip = true;
+                            break;
+                        }
+                    }
+
+                    if (skip) continue;
 
                     switch (method)
                     {
